@@ -1,0 +1,30 @@
+version: '3'
+services:
+  zookeeper:
+    image: myzookeeper_jmx
+    container_name: myzookeeper_jmx
+    volumes:
+      - ./zookeeper.cfg:/zookeeper/conf/zoo.cfg
+    ports:
+      - "2181:2181"
+      - "2881:2888"
+      - "3881:3888"
+      - "8081:8080"
+      - "9991:9999"
+  prometheus:
+    image: myprometheus
+    container_name: myprometheus
+    entrypoint: /prometheus/prometheus
+    command: --config.file=/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus.yml:/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "secret"
+      GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource"
+    ports:
+      - "3000:3000"

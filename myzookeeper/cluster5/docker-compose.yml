@@ -1,0 +1,52 @@
+version: '3'
+services:
+  node1:
+    image: myzookeeper
+    volumes:
+      - ./node.cfg:/zookeeper/conf/zoo.cfg
+      - ./myid1:/zookeeper/data/myid
+    ports:
+      - "2181:2181"
+      - "2881:2888"
+      - "3881:3888"
+      - "8081:8080"
+  node2:
+    image: myzookeeper
+    volumes:
+      - ./node.cfg:/zookeeper/conf/zoo.cfg
+      - ./myid2:/zookeeper/data/myid
+    ports:
+      - "2182:2181"
+      - "2882:2888"
+      - "3882:3888"
+      - "8082:8080"
+  node3:
+    image: myzookeeper
+    volumes:
+      - ./node.cfg:/zookeeper/conf/zoo.cfg
+      - ./myid3:/zookeeper/data/myid
+    ports:
+      - "2183:2181"
+      - "2883:2888"
+      - "3883:3888"
+      - "8083:8080"
+  node4:
+    image: myzookeeper
+    volumes:
+      - ./node.cfg:/zookeeper/conf/zoo.cfg
+      - ./myid4:/zookeeper/data/myid
+    ports:
+      - "2184:2181"
+      - "2884:2888"
+      - "3884:3888"
+      - "8084:8080"
+  node5:
+    image: myzookeeper
+    volumes:
+      - ./node.cfg:/zookeeper/conf/zoo.cfg
+      - ./myid5:/zookeeper/data/myid
+    ports:
+      - "2185:2181"
+      - "2885:2888"
+      - "3885:3888"
+      - "8085:8080"
